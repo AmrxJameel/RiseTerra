@@ -1,0 +1,378 @@
+/* ============================================================
+   Division Split — Dual-brand showcase cards
+   ============================================================ */
+
+.divisions {
+  position: relative;
+  background: var(--color-black);
+  padding-block: 0 80px;
+  overflow: hidden;
+}
+
+.divisions__header {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  padding-block: 80px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.divisions__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.divisions__eyebrow-line {
+  display: block;
+  width: 32px;
+  height: 1.5px;
+  background: var(--color-gold);
+}
+
+.divisions__eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.divisions__title {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 5vw, 58px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--color-white);
+  line-height: 1.0;
+}
+
+.divisions__subtitle {
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--color-muted);
+  max-width: 48ch;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* --- Cards grid --- */
+.divisions__grid {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* --- Card --- */
+.division-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition:
+    transform var(--duration-slow) var(--ease-out-expo),
+    border-color var(--duration-slow) ease,
+    box-shadow var(--duration-slow) ease;
+  min-height: 540px;
+  display: flex;
+  flex-direction: column;
+}
+
+.division-card:hover {
+  transform: translateY(-6px);
+}
+
+.division-card--contracting:hover {
+  border-color: rgba(201,168,76,0.35);
+  box-shadow: 0 32px 80px rgba(201,168,76,0.1), 0 0 0 1px rgba(201,168,76,0.08);
+}
+
+.division-card--transport:hover {
+  border-color: rgba(91,143,201,0.35);
+  box-shadow: 0 32px 80px rgba(91,143,201,0.1), 0 0 0 1px rgba(91,143,201,0.08);
+}
+
+/* Card background visual */
+.division-card__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.division-card__bg-gradient {
+  position: absolute;
+  inset: 0;
+  transition: opacity var(--duration-slow) ease;
+}
+
+.division-card--contracting .division-card__bg-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 0%, rgba(201,168,76,0.12) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(14,14,18,0) 0%, var(--color-surface) 100%);
+}
+
+.division-card--transport .division-card__bg-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 0%, rgba(91,143,201,0.1) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(14,14,18,0) 0%, var(--color-surface) 100%);
+}
+
+.division-card:hover .division-card__bg-gradient { opacity: 1.3; }
+
+/* Geometric pattern overlay */
+.division-card__pattern {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 280px;
+  height: 280px;
+  opacity: 0.06;
+  transition: opacity var(--duration-slow) ease, transform var(--duration-slow) var(--ease-out-expo);
+}
+
+.division-card:hover .division-card__pattern {
+  opacity: 0.1;
+  transform: scale(1.05) rotate(3deg);
+}
+
+/* --- Card content --- */
+.division-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 40px;
+}
+
+.division-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+/* Icon badge */
+.division-card__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--duration-base) var(--ease-out-expo);
+}
+
+.division-card--contracting .division-card__icon {
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--color-gold);
+}
+
+.division-card--transport .division-card__icon {
+  background: rgba(91,143,201,0.12);
+  border: 1px solid rgba(91,143,201,0.2);
+  color: #5B8FC9;
+}
+
+.division-card:hover .division-card__icon {
+  transform: scale(1.08);
+}
+
+/* Division index number */
+.division-card__index {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-muted-2);
+}
+
+/* Main text block */
+.division-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding-top: 80px;
+}
+
+.division-card__label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.division-card--contracting .division-card__label { color: var(--color-gold); }
+.division-card--transport   .division-card__label { color: #5B8FC9; }
+
+.division-card__name {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.5vw, 42px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-white);
+  line-height: 1.05;
+}
+
+.division-card__desc {
+  font-size: 14.5px;
+  color: var(--color-muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 36ch;
+}
+
+/* Feature tags */
+.division-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
+}
+
+.division-tag {
+  padding: 5px 12px;
+  border-radius: 100px;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.division-card--contracting .division-tag {
+  color: rgba(201,168,76,0.8);
+  border-color: rgba(201,168,76,0.18);
+  background: rgba(201,168,76,0.05);
+}
+
+.division-card--transport .division-tag {
+  color: rgba(91,143,201,0.8);
+  border-color: rgba(91,143,201,0.18);
+  background: rgba(91,143,201,0.05);
+}
+
+/* CTA row */
+.division-card__footer {
+  margin-top: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  gap: var(--space-4);
+}
+
+.division-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition:
+    gap var(--duration-base) var(--ease-out-expo),
+    color var(--duration-fast) ease;
+}
+
+.division-card--contracting .division-card__cta { color: var(--color-gold); }
+.division-card--transport   .division-card__cta { color: #5B8FC9; }
+
+.division-card:hover .division-card__cta { gap: var(--space-3); }
+
+.division-card__cta-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  transition:
+    transform var(--duration-base) var(--ease-out-expo),
+    background var(--duration-fast) ease;
+}
+
+.division-card:hover .division-card__cta-arrow {
+  transform: translateX(3px);
+}
+
+.division-card__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.division-card__stat-num {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.division-card__stat-label {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+}
+
+/* --- Bottom separator strip --- */
+.divisions__separator {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.divisions__separator-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.divisions__separator-text {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+  white-space: nowrap;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .divisions__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .division-card {
+    min-height: 460px;
+  }
+
+  .division-card__content { padding: 32px; }
+}
+
+@media (max-width: 480px) {
+  .division-card__content { padding: 24px; }
+  .division-card__body    { padding-top: 56px; }
+  .divisions__header { padding-block: 48px 32px; }
+}

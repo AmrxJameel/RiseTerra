@@ -1,0 +1,85 @@
+/* RTL overrides for Navbar */
+[dir="rtl"] .navbar__links a::after {
+  transform-origin: right;
+}
+
+[dir="rtl"] .navbar__logo-tagline {
+  letter-spacing: 0.12em;
+}
+
+/* RTL overrides for DivisionSplit */
+[dir="rtl"] .divisions__eyebrow {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .divisions__eyebrow-line {
+  background: linear-gradient(270deg, var(--color-gold), transparent);
+}
+
+[dir="rtl"] .division-card__footer {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .division-card__stat {
+  align-items: flex-start;
+}
+
+[dir="rtl"] .division-card__cta {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .divisions__separator-line:first-child {
+  background: linear-gradient(270deg, var(--color-border), transparent);
+}
+
+[dir="rtl"] .divisions__separator-line:last-child {
+  background: linear-gradient(90deg, var(--color-border), transparent);
+}
+
+/* RTL hero overrides */
+[dir="rtl"] .hero__bg-gradient {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 20%, rgba(91,143,201,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 60%);
+}
+
+[dir="rtl"] .gold-rule {
+  background: linear-gradient(270deg, var(--color-gold), transparent);
+}
+
+/* RTL overrides for AboutSection */
+[dir="rtl"] .about-intro__eyebrow {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .about-intro__eyebrow-line {
+  background: linear-gradient(270deg, var(--color-gold), transparent);
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .about-timeline__track {
+    left: auto;
+    right: 24px;
+  }
+  
+  [dir="rtl"] .timeline-item {
+    padding-left: 0;
+    padding-right: 48px;
+    text-align: right;
+  }
+  
+  [dir="rtl"] .timeline-item__dot {
+    left: auto;
+    right: 24px;
+    transform: translate(50%, -50%);
+  }
+  
+  [dir="rtl"] .timeline-item:hover .timeline-item__dot {
+    transform: translate(50%, -50%) scale(1.3);
+  }
+
+  [dir="rtl"] .timeline-item__content {
+    text-align: right;
+  }
+}
