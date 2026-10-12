@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riseterra.com.sa/sitemap.xml
